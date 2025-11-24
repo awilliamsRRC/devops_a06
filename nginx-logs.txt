@@ -1,0 +1,42 @@
+RepoTags:
+[
+  "nginx:alpine"
+]
+Created:
+2025-10-28T22:11:24.759850419Z
+Os:
+linux
+Config:
+{
+  "Cmd": [
+    "nginx",
+    "-g",
+    "daemon off;"
+  ],
+  "Entrypoint": [
+    "/docker-entrypoint.sh"
+  ],
+  "Env": [
+    "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+    "NGINX_VERSION=1.29.3",
+    "PKG_RELEASE=1",
+    "DYNPKG_RELEASE=1",
+    "NJS_VERSION=0.9.4",
+    "NJS_RELEASE=1"
+  ],
+  "ExposedPorts": {
+    "80/tcp": {}
+  },
+  "Labels": {
+    "maintainer": "NGINX Docker Maintainers <docker-maint@nginx.com>"
+  },
+  "OnBuild": null,
+  "StopSignal": "SIGQUIT",
+  "User": "",
+  "Volumes": null,
+  "WorkingDir": "/"
+}
+ExposedPorts:
+{
+  "80/tcp": {}
+}

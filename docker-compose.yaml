@@ -1,0 +1,42 @@
+services:
+  backend:
+    build:
+      context: ./banking-backend
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/bank_app
+      - SECRET_KEY=supersecretkey
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:6
+    restart: always
+    volumes:
+      - mongo_data:/data/db
+    ports:
+      - "27017:27017"
+
+  studentportfolio:
+    build:
+      context: ./studentportfolio
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+      - studentportfolio
+    volumes:
+      # Mount your custom nginx config into the container
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+
+volumes:
+  mongo_data:
