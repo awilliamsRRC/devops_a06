@@ -5,7 +5,7 @@
 #  Error handling
 set -Eeuo pipefail
 
-# STEP 1: VALIDATION
+# STEP 1: VALIDATION.
 
 echo "Validating Packages/Services..."
 
@@ -26,7 +26,7 @@ command -v docker-compose >/dev/null 2>&1 && echo "Docker Compose is installed" 
 
 # PORT AVILABILITY.
 
-# Check backend port
+# Check backend port.
 ss -tuln | grep -q ":5000" && echo "Port is available" || { echo "Port is not available"; exit 1; }
 
 # Check MongoDB port
